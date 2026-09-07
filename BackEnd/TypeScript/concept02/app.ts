@@ -39,4 +39,33 @@ function getData(obj: user) {
       return "Name: " + name + " || Email: " + email + " || Sex: " + sex + " || Password: " + password;
 }
 
-console.log(getData({ name: "Ajay", email: "AJax@gamail.com" , password:"12221"}));
+console.log(getData({ name: "Ajay", email: "AJax@gamail.com", password: "12221" }));
+
+
+//Extends
+interface Admin extends user {
+      admin: boolean,
+}
+
+function getAdminData(obj: Admin) {
+      return obj.name + " " + obj.email + " " + obj.sex + " " + obj.password + " " + obj.admin;
+}
+
+console.log(getAdminData({ name: "Ajay", email: "AJax@gamail.com", password: "12221", admin: true }));
+
+//Merging interfaces
+interface Abc {
+      name: string,
+}
+
+interface Abc {
+      email: String,
+}
+
+
+const abc: Abc = {
+      name: "Lucky",
+      email: "[EMAIL_ADDRESS]",
+}
+
+console.log(abc.name + " " + abc.email);
