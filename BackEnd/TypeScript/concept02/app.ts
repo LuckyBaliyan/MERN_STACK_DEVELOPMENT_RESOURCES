@@ -69,3 +69,49 @@ const abc: Abc = {
 }
 
 console.log(abc.name + " " + abc.email);
+
+/**
+ * @FUNCTIONS FROM HERE
+*/
+
+function abcd(name: String, age: number, callback: () => void) {
+      callback();
+};
+
+abcd("xyz", 20, () => {
+      console.log("Hello World!");
+});
+
+function abcde(name: String, age: number, cb: (val: String, val2: number, val3: String) => String, gender = "CANT SAY!"): String {
+      return cb(name, age, gender);
+}
+
+const res = abcde("xyz", 23, (val: String, val2: number, val3: String) => {
+      return `${val} ${val2} ${val3}`;
+}, "MALE");
+
+console.log(res);
+
+//rest opr
+const getArr = (...args: number[][]) => {
+      return args.flat();
+}
+
+console.log(getArr([1, 2, 3], [4, 5, 6]));
+
+//FUNCTION OVERLOADING
+function xyz(a: String): void;
+function xyz(a: String, b: number): number;
+
+function xyz(a?: any, b?: any) {
+      if (typeof a == 'string' && b == undefined) {
+            console.log("Hey!");
+      }
+      else if (typeof a == 'string' && typeof b == 'number') {
+            return a.length * b;
+      }
+}
+
+xyz("lucky");
+const r = xyz("Lucky", 12);
+console.log(r);
