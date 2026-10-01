@@ -15,7 +15,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 //using the passport stratergy
-
 app.use(passport.initialize());
 
 //passport google startegy
@@ -35,7 +34,10 @@ app.get("/auth/google/callback",
       }),
       (req, res) => {
             console.log(req.user);
-            res.send("Google Authentication Sucessfull!!")
+
+            //source of truth that the res from our backend
+            const token = jwt.sign(req.user, process.env.JWT_SECRET, {expiresIn:"1day"});
+            res.json({message: "Google Authenticated Sucessfully!", token});
       }
 );
 
